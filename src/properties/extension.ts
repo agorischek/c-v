@@ -11,6 +11,6 @@ import { split } from "../utilities/split";
  * @returns {number} The extension of the correlation vector.
  */
 export const extension = (cv: string): number => {
-  const [_, extension] = split(cv);
+  const [, extension] = split(cv);
   return extension;
 };

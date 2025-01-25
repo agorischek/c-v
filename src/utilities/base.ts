@@ -11,6 +11,6 @@ import { split } from "./split";
  * @returns {string} The base part of the correlation vector.
  */
 export const base = (cv: string): string => {
-  const [base, _] = split(cv);
+  const [base] = split(cv);
   return base;
 };
