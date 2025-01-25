@@ -3,12 +3,16 @@
  *  Licensed under the MIT License.
  */
 
-import { overflow } from '../internal/overflow';
-import { split } from '../utilities/split';
+import { maxVectorLengthV1, maxVectorLengthV2 } from '../constants/lengths';
+import { versionIsV1 } from '../internal/versionIsV1';
 import { version } from './version';
 
 export const oversized = (cv: string): boolean => {
-  const [base, extension] = split(cv);
   const v = version(cv);
-  return overflow(base, extension, v);
+
+  if (versionIsV1(v)) {
+    return cv.length > maxVectorLengthV1;
+  } else {
+    return cv.length > maxVectorLengthV2;
+  }
 };

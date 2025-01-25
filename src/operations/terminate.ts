@@ -6,5 +6,8 @@
 import { terminator } from '../constants/characters';
 
 export const terminate = (cv: string): string => {
+  if (cv.endsWith(terminator)) {
+    return cv;
+  }
   return cv + terminator;
 };

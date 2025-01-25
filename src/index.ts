@@ -10,7 +10,10 @@ export { immutable } from './properties/immutable';
 export { oversized } from './properties/oversized';
 export { version } from './properties/version';
 
+export { split } from './helpers/split';
+export { validate } from './helpers/validate';
+
 export { type SpinCounterInterval } from './types/SpinCounterInterval';
 export { type SpinCounterPeriodicity } from './types/SpinCounterPeriodicity';
 export { type SpinEntropy } from './types/SpinEntropy';
-export { type SpinOptions as SpinParameters } from './types/SpinParameters';
+export { type SpinOptions } from './types/SpinOptions';

@@ -10,6 +10,4 @@ import { extender, separator } from '../constants/characters';
  * @param {string} cv The current correlation vector string.
  * @returns {string} The extended correlation vector string.
  */
-export const extend = (cv: string): string => {
-  return `${cv}${separator}${extender}`;
-};
+export const extend = (cv: string): string => cv + separator + extender;

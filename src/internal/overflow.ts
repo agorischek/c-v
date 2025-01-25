@@ -1,10 +1,8 @@
-/*
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License.
- */
-
-import { maxVectorLengthV1 } from '../constants/lengths';
+import { separator } from '../constants/characters';
+import { maxVectorLengthV1, maxVectorLengthV2 } from '../constants/lengths';
 import { type Version } from '../types/Version';
+import { versionIsV1 } from './versionIsV1';
+import { versionIsV2 } from './versionIsV2';
 
 /**
  * Checks if the base vector with the given extension overflows the maximum vector length for the specified version
@@ -19,14 +17,10 @@ export const overflow = (
   version: Version
 ): boolean => {
   if (base) {
-    const size: number =
-      base.length +
-      1 +
-      (extension > 0 ? Math.floor(Math.log10(extension)) : 0) +
-      1;
+    const size = base.length + separator.length + extension.toString().length;
     return (
-      (version === 'v1' && size > maxVectorLengthV1) ||
-      (version === 'v2' && size > maxVectorLengthV1)
+      (versionIsV1(version) && size > maxVectorLengthV1) ||
+      (versionIsV2(version) && size > maxVectorLengthV2)
     );
   }
   return false;

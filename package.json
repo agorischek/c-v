@@ -31,6 +31,7 @@
   "license": "MIT",
   "scripts": {
     "build": "vite build",
+    "check": "prettier --check .",
     "dev:src": "bun run dev/src.ts",
     "dev:esm": "bun run dev/esm.js",
     "dev:cjs": "bun run dev/cjs.js",

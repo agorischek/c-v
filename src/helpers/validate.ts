@@ -9,33 +9,35 @@ import {
   maxVectorLengthV1,
   maxVectorLengthV2,
 } from '../constants/lengths';
+import { versionIsV1 } from '../internal/versionIsV1';
+import { versionIsV2 } from '../internal/versionIsV2';
 import { type Version } from '../types/Version';
 
-export const validate = (correlationVector: string, version: Version): void => {
+export const validate = (cv: string, version: Version): void => {
   let maxVectorLength: number;
   let baseLength: number;
 
-  if ('v1' === version) {
+  if (versionIsV1(version)) {
     maxVectorLength = maxVectorLengthV1;
     baseLength = baseLengthV1;
-  } else if ('v2' === version) {
+  } else if (versionIsV2(version)) {
     maxVectorLength = maxVectorLengthV2;
     baseLength = baseLengthV2;
   } else {
     throw new Error(`Unsupported correlation vector version: ${version}`);
   }
 
-  if (!correlationVector || correlationVector.length > maxVectorLength) {
+  if (!cv || cv.length > maxVectorLength) {
     throw new Error(
       `The ${version} correlation vector can not be null or bigger than ${maxVectorLength} characters`
     );
   }
 
-  const parts: string[] = correlationVector.split('.');
+  const parts: string[] = cv.split('.');
 
   if (parts.length < 2 || parts[0].length !== baseLength) {
     throw new Error(
-      `Invalid correlation vector ${correlationVector}. Invalid base value ${parts[0]}`
+      `Invalid correlation vector ${cv}. Invalid base value ${parts[0]}`
     );
   }
 
@@ -43,7 +45,7 @@ export const validate = (correlationVector: string, version: Version): void => {
     const result: number = parseInt(parts[i], 10);
     if (isNaN(result) || result < 0) {
       throw new Error(
-        `Invalid correlation vector ${correlationVector}. Invalid extension value ${parts[i]}`
+        `Invalid correlation vector ${cv}. Invalid extension value ${parts[i]}`
       );
     }
   }

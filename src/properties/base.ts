@@ -3,7 +3,7 @@
  *  Licensed under the MIT License.
  */
 
-import { split } from './split';
+import { split } from '../helpers/split';
 
 /**
  * Gets the base part of the correlation vector.

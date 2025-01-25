@@ -4,9 +4,9 @@
  */
 
 import { defaultVersion } from './constants/defaults';
+import { seed } from './internal/seed';
 import { extend } from './operations/extend';
 import { type Version } from './types/Version';
-import { seed } from './utilities/seed';
 
 /**
  * Generates a string based on the provided version.

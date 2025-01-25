@@ -15,12 +15,12 @@ import { spinEntropies } from '../constants/spinEntropies';
 import { overflow } from '../internal/overflow';
 import { immutable } from '../properties/immutable';
 import { version } from '../properties/version';
-import type { SpinOptions } from '../types/SpinParameters';
+import type { SpinOptions } from '../types/SpinOptions';
 import type { Version } from '../types/Version';
 import { extend } from './extend';
 import { terminate } from './terminate';
 
-export const spin = (cv: string, options?: SpinOptions): string => {
+export const spin = (cv: string, options?: Partial<SpinOptions>): string => {
   if (immutable(cv)) {
     return cv;
   }
@@ -64,10 +64,10 @@ export const spin = (cv: string, options?: SpinOptions): string => {
 
   const s: number = parseInt(value, 2);
 
-  const baseVector: string = `${cv}${separator}${s}`;
-  if (overflow(baseVector, 0, v)) {
+  const base: string = `${cv}${separator}${s}`;
+  if (overflow(base, 0, v)) {
     return terminate(cv);
   }
 
-  return extend(baseVector);
+  return extend(base);
 };
