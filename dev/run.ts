@@ -1,12 +1,13 @@
 import { cv, increment, extend, spin } from "../src";
 
-const vector = cv();
+const initial = cv();
+console.log("Initial:    ", initial);
 
-const incremented = increment(vector);
-console.log(incremented);
+const incremented = increment(initial);
+console.log("Incremented:", incremented);
 
 const extended = extend(incremented);
-console.log(extended);
+console.log("Extended:   ", extended);
 
 const spun = spin(extended);
-console.log(spun);
+console.log("Spun:       ", spun);

@@ -17,6 +17,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "dev": "bun run dev/run.ts",
     "test": "bun test",
     "lint": "eslint ."
   }
