@@ -19,7 +19,7 @@ export const spin = (cv: string, parameters?: SpinParameters): string => {
   parameters = parameters || {
     interval: SpinCounterInterval.Coarse,
     periodicity: SpinCounterPeriodicity.Short,
-    entropy: SpinEntropy.High,
+    entropy: SpinEntropy.Low,
   };
 
   let ticks: number = Date.now() * 10000;

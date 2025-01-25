@@ -12,10 +12,10 @@ export const enum SpinEntropy {
   /**
    * Generate entropy using 8 bits.
    */
-  Low = 8,
+  One = 1,
 
   /**
    * Generate entropy using 16 bits.
    */
-  High = 16,
+  Two = 2,
 }
