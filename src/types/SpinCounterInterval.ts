@@ -3,16 +3,12 @@
  *  Licensed under the MIT License.
  */
 
-export const enum SpinCounterInterval {
-  /**
-   * The coarse interval drops the 24 least significant bits in DateTime.Ticks
-   * resulting in a counter that increments every 1.67 seconds.
-   */
-  Coarse,
-
-  /**
-   * The fine interval drops the 16 least significant bits in DateTime.Ticks
-   * resulting in a counter that increments every 6.5 milliseconds.
-   */
-  Fine,
-}
+/**
+ * The interval at which the spin counter increments.
+ *
+ * - "coarse": The coarse interval drops the 24 least significant bits in DateTime.Ticks
+ *   resulting in a counter that increments every 1.67 seconds.
+ * - "fine": The fine interval drops the 16 least significant bits in DateTime.Ticks
+ *   resulting in a counter that increments every 6.5 milliseconds.
+ */
+export type SpinCounterInterval = "coarse" | "fine";

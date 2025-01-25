@@ -3,19 +3,11 @@
  *  Licensed under the MIT License.
  */
 
-export const enum SpinCounterPeriodicity {
-  /**
-   * Do not store a counter as part of the spin value.
-   */
-  None = 0,
-
-  /**
-   * The short periodicity stores the counter using 16 bits.
-   */
-  Short = 16,
-
-  /**
-   * The medium periodicity stores the counter using 24 bits.
-   */
-  Medium = 24,
-}
+/**
+ * The periodicity of the spin counter.
+ *
+ * - "none": Do not store a counter as part of the spin value.
+ * - "short": The short periodicity stores the counter using 16 bits.
+ * - "medium": The medium periodicity stores the counter using 24 bits.
+ */
+export type SpinCounterPeriodicity = "none" | "short" | "medium";
