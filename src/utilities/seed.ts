@@ -6,7 +6,7 @@
 import { base64CharSet, base64LastCharSet } from '../constants/characters';
 import { defaultVersion } from '../constants/defaults';
 import { baseLengthV1, baseLengthV2 } from '../constants/lengths';
-import { Version } from '../types/Version';
+import { type Version } from '../types/Version';
 
 /**
  * Seed function to randomly generate a 16 character base64 encoded string for the Correlation Vector's base value

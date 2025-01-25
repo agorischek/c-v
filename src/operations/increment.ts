@@ -3,6 +3,7 @@
  *  Licensed under the MIT License.
  */
 
+import { separator } from '../constants/characters';
 import { maxVectorLengthV1, maxVectorLengthV2 } from '../constants/lengths';
 import { immutable } from '../properties/immutable';
 import { version } from '../properties/version';
@@ -35,5 +36,5 @@ export const increment = (cv: string): string => {
     return cv;
   }
 
-  return `${base}.${next}`;
+  return `${base}${separator}${next}`;
 };

@@ -3,7 +3,4 @@
  *  Licensed under the MIT License.
  */
 
-export const enum Version {
-  V1 = 'v1',
-  V2 = 'v2',
-}
+export type Version = 'v1' | 'v2';

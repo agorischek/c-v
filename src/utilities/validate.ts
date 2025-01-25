@@ -9,7 +9,7 @@ import {
   maxVectorLengthV1,
   maxVectorLengthV2,
 } from '../constants/lengths';
-import { Version } from '../types/Version';
+import { type Version } from '../types/Version';
 
 export const validate = (correlationVector: string, version: Version): void => {
   let maxVectorLength: number;

@@ -4,16 +4,23 @@
  */
 
 import { maxVectorLengthV1 } from '../constants/lengths';
-import { Version } from '../types/Version';
+import { type Version } from '../types/Version';
 
+/**
+ * Checks if the base vector with the given extension overflows the maximum vector length for the specified version
+ * @param base - The base vector string
+ * @param extension - The extension number
+ * @param version - The version of the vector
+ * @returns True if the vector overflows, false otherwise
+ */
 export const overflow = (
-  baseVector: string,
+  base: string,
   extension: number,
   version: Version
 ): boolean => {
-  if (baseVector) {
+  if (base) {
     const size: number =
-      baseVector.length +
+      base.length +
       1 +
       (extension > 0 ? Math.floor(Math.log10(extension)) : 0) +
       1;

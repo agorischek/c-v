@@ -31,12 +31,15 @@
   "license": "MIT",
   "scripts": {
     "build": "vite build",
-    "dev": "bun run dev/run.ts",
+    "dev:src": "bun run dev/src.ts",
+    "dev:esm": "bun run dev/esm.js",
+    "dev:cjs": "bun run dev/cjs.js",
     "format": "prettier --write .",
     "test": "bun test",
     "lint": "eslint ."
   },
   "dependencies": {
-    "desm": "^1.3.1"
+    "desm": "^1.3.1",
+    "table": "^6.9.0"
   }
 }

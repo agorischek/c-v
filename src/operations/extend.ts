@@ -3,7 +3,7 @@
  *  Licensed under the MIT License.
  */
 
-import { separator } from '../constants/characters';
+import { extender, separator } from '../constants/characters';
 
 /**
  * Extends the correlation vector by appending ".0".
@@ -11,5 +11,5 @@ import { separator } from '../constants/characters';
  * @returns {string} The extended correlation vector string.
  */
 export const extend = (cv: string): string => {
-  return `${cv}${separator}0`;
+  return `${cv}${separator}${extender}`;
 };

@@ -2,6 +2,6 @@ version: '0.2'
 ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
-words: ['desm', 'periodicities']
+words: ['desm', 'periodicities', 'norc']
 ignoreWords: []
 import: []

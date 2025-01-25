@@ -5,9 +5,26 @@
 
 import { defaultVersion } from './constants/defaults';
 import { extend } from './operations/extend';
-import { Version } from './types/Version';
+import { type Version } from './types/Version';
 import { seed } from './utilities/seed';
 
+/**
+ * Generates a string based on the provided version.
+ *
+ * @param {Version} [version=defaultVersion] - The version to use for generating the string.
+ * @returns {string} The generated string.
+ *
+ * @example
+ * // Using the default version
+ * const result = cv();
+ * console.log(result); // Output will depend on the implementation of `extend` and `seed`
+ *
+ * @example
+ * // Using a custom version
+ * const customVersion = { major: 1, minor: 0, patch: 0 };
+ * const result = cv(customVersion);
+ * console.log(result); // Output will depend on the implementation of `extend` and `seed`
+ */
 export const cv = (version: Version = defaultVersion): string => {
   return extend(seed(version));
 };
