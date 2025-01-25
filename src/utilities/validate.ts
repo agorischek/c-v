@@ -3,7 +3,7 @@
  *  Licensed under the MIT License.
  */
 
-import { baseLengthV2, maxVectorLengthV2 } from "../constants/lenghts";
+import { baseLengthV2, maxVectorLengthV2 } from "../constants/lengths";
 import { Version } from "../types/Version";
 
 export const validate = (correlationVector: string, version: Version): void => {

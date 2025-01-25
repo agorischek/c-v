@@ -3,10 +3,10 @@
  *  Licensed under the MIT License.
  */
 
-import { maxVectorLengthV1, maxVectorLengthV2 } from "../constants/defaults";
+import { maxVectorLengthV1 } from "../constants/lengths";
 import { Version } from "../types/Version";
 
-export const isOversized = (
+export const overflow = (
   baseVector: string,
   extension: number,
   version: Version
@@ -19,7 +19,7 @@ export const isOversized = (
       1;
     return (
       (version === "v1" && size > maxVectorLengthV1) ||
-      (version === "v2" && size > maxVectorLengthV2)
+      (version === "v2" && size > maxVectorLengthV1)
     );
   }
   return false;

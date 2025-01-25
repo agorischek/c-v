@@ -9,7 +9,7 @@ import { version } from "../properties/version";
 import { immutable } from "../properties/immutable";
 import { terminate } from "./terminate";
 import { SpinParameters } from "../types/SpinParameters";
-import { isOversized } from "../internal/isOversized";
+import { overflow } from "../internal/overflow";
 import { SpinCounterInterval } from "../types/SpinCounterInterval";
 import { SpinCounterPeriodicity } from "../types/SpinCounterPeriodicity";
 import { SpinEntropy } from "../types/SpinEntropy";
@@ -64,7 +64,7 @@ export const spin = (cv: string, parameters?: SpinParameters): string => {
   let s: number = parseInt(value, 2);
 
   let base: string = `${cv}.${s}`;
-  if (isOversized(base, 0, v)) {
+  if (overflow(base, 0, v)) {
     return terminate(base);
   }
 

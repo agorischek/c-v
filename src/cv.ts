@@ -1,3 +1,8 @@
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
 import { Version } from "./types/Version";
 import { extend } from "./operations/extend";
 import { seed } from "./utilities/seed";
