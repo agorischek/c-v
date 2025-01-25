@@ -3,7 +3,7 @@
 A diminutive API for the [Correlation Vector reference implementation](https://github.com/microsoft/CorrelationVector-JavaScript). Supports both ESM and CommonJS.
 
 ```ts
-import { cv, increment, extend, spin } from 'c-v';
+import { cv, increment, extend, spin } from 'correlation-vector';
 
 const vector = cv();
 console.log(vector);
