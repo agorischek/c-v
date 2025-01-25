@@ -3,13 +3,13 @@
  *  Licensed under the MIT License.
  */
 
-import { defaultVersion } from './constants/defaults';
-import { seed } from './internal/seed';
-import { extend } from './operations/extend';
-import { type Version } from './types/Version';
+import { defaultVersion } from '../constants/defaults';
+import { cv } from '../cv';
+import { type Version } from '../types/Version';
 
 /**
  * Generates a string based on the provided version.
+ * @remarks Alias of `cv`.
  *
  * @param - The version to use for generating the string. Defaults to V2.
  * @returns The generated vector.
@@ -22,6 +22,6 @@ import { type Version } from './types/Version';
  * const vector = cv('v1');
  * // d3gwzrwhMeb4rilO.0
  */
-export const cv = (version: Version = defaultVersion): string => {
-  return extend(seed(version));
+export const create = (version: Version = defaultVersion): string => {
+  return cv(version);
 };

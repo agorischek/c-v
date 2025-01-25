@@ -1,5 +1,6 @@
 export { cv } from './cv';
 
+export { create } from './operations/create';
 export { extend } from './operations/extend';
 export { increment } from './operations/increment';
 export { spin } from './operations/spin';

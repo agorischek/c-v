@@ -22,6 +22,22 @@ console.log(spun);
 // I+2/FsGclq+zYtife68YdA.1.0.384636491.0
 ```
 
+## Creation
+
+Vectors can be created via `cv()`:
+
+```ts
+import { cv } from 'correlation-vector';
+const vector = cv();
+```
+
+The `create()` alias may also be used:
+
+```ts
+import * as cv from 'correlation-vector';
+const vector = cv.create();
+```
+
 ## Versions
 
 - `v2` (default): 22 character base, 127 character max
