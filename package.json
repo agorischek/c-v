@@ -1,13 +1,13 @@
 {
-  "name": "correlation-vector",
-  "version": "1.0.0",
+  "name": "cv",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jasmine-ts specs/correlationVectorSpec.ts"
+    "test": "bun test"
   },
   "keywords": [],
-  "author": "",
+  "author": "Microsoft",
   "license": "ISC",
   "devDependencies": {
     "@types/jasmine": "^2.8.8",
