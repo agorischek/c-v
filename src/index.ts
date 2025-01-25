@@ -13,4 +13,4 @@ export { oversized } from "./properties/oversized";
 export { type SpinCounterPeriodicity } from "./types/SpinCounterPeriodicity";
 export { type SpinCounterInterval } from "./types/SpinCounterInterval";
 export { type SpinEntropy } from "./types/SpinEntropy";
-export { type SpinParameters } from "./types/SpinParameters";
+export { type SpinOptions as SpinParameters } from "./types/SpinParameters";

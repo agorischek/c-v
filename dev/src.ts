@@ -1,5 +1,7 @@
 import { cv, increment, extend, spin } from "../src";
 
+console.log("Running from dist...");
+
 const initial = cv();
 console.log("Initial:    ", initial);
 
