@@ -1,31 +1,17 @@
 {
   "name": "cv",
-  "version": "0.0.1",
-  "description": "",
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "bun test"
-  },
-  "keywords": [],
-  "author": "Microsoft",
-  "license": "ISC",
+  "module": "src/index.ts",
+  "type": "module",
   "devDependencies": {
-    "@types/jasmine": "^2.8.8",
-    "browserify": "^16.2.2",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-replace": "^1.0.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-typescript": "4.0.2",
-    "gulp-uglify": "^3.0.0",
-    "jasmine": "^3.1.0",
-    "jasmine-ts": "^0.2.1",
-    "merge2": "^1.2.2",
-    "tsify": "^4.0.0",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "author": "Microsoft",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "bun test"
   }
 }

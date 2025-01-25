@@ -3,8 +3,8 @@
  *  Licensed under the MIT License.
  */
 
-import { terminationSign } from "../constants/defaults";
+import { terminator } from "../constants/characters";
 
 export const terminate = (cv: string): string => {
-  return cv + terminationSign;
+  return cv + terminator;
 };

@@ -3,8 +3,8 @@
  *  Licensed under the MIT License.
  */
 
-import { terminationSign } from "../constants/defaults";
+import { terminator } from "../constants/characters";
 
 export const immutable = (cv: string): boolean => {
-  return cv && cv.endsWith(terminationSign);
+  return cv !== undefined && cv.endsWith(terminator);
 };

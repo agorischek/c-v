@@ -3,7 +3,7 @@
  *  Licensed under the MIT License.
  */
 
-import { baseLengthV1, baseLengthV2 } from "../constants/defaults";
+import { baseLengthV1, baseLengthV2 } from "../constants/lengths";
 import { Version } from "../types/Version";
 
 export const version = (cv: string): Version => {

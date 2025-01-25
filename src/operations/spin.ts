@@ -8,7 +8,7 @@ import { extend } from "./extend";
 import { version } from "../properties/version";
 import { immutable } from "../properties/immutable";
 import { terminate } from "./terminate";
-import { SpinParameters } from "../types/SpinParameters";
+import { type SpinParameters } from "../types/SpinParameters";
 import { overflow } from "../internal/overflow";
 import { SpinCounterInterval } from "../types/SpinCounterInterval";
 import { SpinCounterPeriodicity } from "../types/SpinCounterPeriodicity";

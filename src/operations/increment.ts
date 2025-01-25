@@ -5,8 +5,8 @@
 
 import { version } from "../properties/version";
 import { immutable } from "../properties/immutable";
-import { maxVectorLengthV1, maxVectorLengthV2 } from "../constants/defaults";
 import { split } from "../utilities/split";
+import { maxVectorLengthV1, maxVectorLengthV2 } from "../constants/lengths";
 
 /**
  * Increments the current extension by one. Do this before passing the value to an

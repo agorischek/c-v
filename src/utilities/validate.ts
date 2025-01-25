@@ -3,7 +3,12 @@
  *  Licensed under the MIT License.
  */
 
-import { baseLengthV2, maxVectorLengthV2 } from "../constants/lengths";
+import {
+  baseLengthV1,
+  baseLengthV2,
+  maxVectorLengthV1,
+  maxVectorLengthV2,
+} from "../constants/lengths";
 import { Version } from "../types/Version";
 
 export const validate = (correlationVector: string, version: Version): void => {
@@ -11,8 +16,8 @@ export const validate = (correlationVector: string, version: Version): void => {
   let baseLength: number;
 
   if ("v1" === version) {
-    maxVectorLength = maxVectorLength;
-    baseLength = baseLength;
+    maxVectorLength = maxVectorLengthV1;
+    baseLength = baseLengthV1;
   } else if ("v2" === version) {
     maxVectorLength = maxVectorLengthV2;
     baseLength = baseLengthV2;
