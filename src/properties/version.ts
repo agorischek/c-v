@@ -1,7 +1,7 @@
-import { baseLengthV1, baseLengthV2 } from "./constants";
-import { CvVersion } from "./CvVersion";
+import { baseLengthV1, baseLengthV2 } from "../constants";
+import { Version } from "../types/Version";
 
-export const inferVersion = (correlationVector: string): CvVersion => {
+export const version = (correlationVector: string): Version => {
   let index: number =
     correlationVector == null ? -1 : correlationVector.indexOf(".");
 
