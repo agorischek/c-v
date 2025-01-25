@@ -10,7 +10,9 @@ import { immutable } from "../properties/immutable";
 import { version } from "../properties/version";
 import type { Version } from "../types/Version";
 
-export enum SpinCounterInterval {
+// ...existing code...
+
+export const enum SpinCounterInterval {
   /**
    * The coarse interval drops the 24 least significant bits in DateTime.Ticks
    * resulting in a counter that increments every 1.67 seconds.
@@ -24,7 +26,7 @@ export enum SpinCounterInterval {
   Fine,
 }
 
-export enum SpinCounterPeriodicity {
+export const enum SpinCounterPeriodicity {
   /**
    * Do not store a counter as part of the spin value.
    */
@@ -41,7 +43,7 @@ export enum SpinCounterPeriodicity {
   Medium = 24,
 }
 
-export enum SpinEntropy {
+export const enum SpinEntropy {
   /**
    * Do not generate entropy as part of the spin value.
    */
@@ -57,6 +59,8 @@ export enum SpinEntropy {
    */
   Two = 2,
 }
+
+// ...existing code...
 
 /**
  * This class stores parameters used by the CorrelationVector Spin operator.
