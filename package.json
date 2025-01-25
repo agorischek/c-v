@@ -10,8 +10,8 @@
   "types": "./dist/cv.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/cv.js",
+      "require": "./dist/cv.cjs"
     }
   },
   "devDependencies": {
