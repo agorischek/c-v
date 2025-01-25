@@ -17,16 +17,17 @@
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@types/bun": "latest",
+    "desm": "^1.3.1",
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
     "prettier-plugin-organize-imports": "^4.1.0",
+    "table": "^6.9.0",
+    "typescript": "^5.0.0",
     "typescript-eslint": "^8.21.0",
     "vite": "^6.0.11",
     "vite-plugin-dts": "^4.5.0"
   },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
+  "peerDependencies": {},
   "author": "Microsoft",
   "license": "MIT",
   "scripts": {
@@ -38,9 +39,5 @@
     "format": "prettier --write .",
     "test": "bun test",
     "lint": "eslint ."
-  },
-  "dependencies": {
-    "desm": "^1.3.1",
-    "table": "^6.9.0"
   }
 }
