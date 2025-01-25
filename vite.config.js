@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { join } from "desm";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
   build: {
@@ -11,4 +12,9 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
   },
+  plugins: [
+    dts({
+      rollupTypes: true,
+    }),
+  ],
 });
