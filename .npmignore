@@ -1,0 +1,6 @@
+dev
+src
+node_modules
+.gitignore
+tsconfig.json
+tsconfig.build.json
