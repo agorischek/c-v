@@ -9,8 +9,12 @@ import {
   baseLengthV2,
   maxVectorLengthV1,
   maxVectorLengthV2,
+  terminationSign,
 } from "./constants";
 import { CvVersion } from "./CvVersion";
+import { inferVersion } from "./inferVersion";
+import { isImmutable } from "./isImmutable";
+import { parse } from "./parse";
 // import { CorrelationVectorVersion } from "./correlationVectorVersion";
 import {
   SpinCounterInterval,
@@ -41,18 +45,6 @@ export class CorrelationVector {
   private immutable: boolean = false;
 
   /**
-   * This is the header that should be used between services to pass the correlation
-   * vector.
-   */
-  public static readonly headerName: string = "MS-CV";
-
-  /**
-   * This is termination sign should be used when vector lenght exceeds
-   * max allowed length
-   */
-  public static readonly terminationSign: string = "!";
-
-  /**
    * Gets or sets a value indicating whether or not to validate the correlation
    * vector on creation.
    */
@@ -65,23 +57,14 @@ export class CorrelationVector {
    * @returns {CorrelationVector} A new correlation vector extended from the current vector.
    */
   public static extend(correlationVector: string): CorrelationVector {
-    if (CorrelationVector.isImmutable(correlationVector)) {
-      return CorrelationVector.parse(correlationVector);
+    if (isImmutable(correlationVector)) {
+      return parse(correlationVector);
     }
 
-    let version: CvVersion = CorrelationVector.inferversion(
-      correlationVector,
-      CorrelationVector.validateCorrelationVectorDuringCreation
-    );
-
-    if (CorrelationVector.validateCorrelationVectorDuringCreation) {
-      CorrelationVector.validate(correlationVector, version);
-    }
+    let version: CvVersion = inferVersion(correlationVector);
 
     if (CorrelationVector.isOversized(correlationVector, 0, version)) {
-      return CorrelationVector.parse(
-        correlationVector + CorrelationVector.terminationSign
-      );
+      return parse(correlationVector + terminationSign);
     }
 
     return new CorrelationVector(correlationVector, 0, version, false);
@@ -98,14 +81,11 @@ export class CorrelationVector {
     correlationVector: string,
     parameters?: SpinParameters
   ): CorrelationVector {
-    if (CorrelationVector.isImmutable(correlationVector)) {
-      return CorrelationVector.parse(correlationVector);
+    if (isImmutable(correlationVector)) {
+      return parse(correlationVector);
     }
 
-    let version: CvVersion = CorrelationVector.inferversion(
-      correlationVector,
-      CorrelationVector.validateCorrelationVectorDuringCreation
-    );
+    let version: CvVersion = inferVersion(correlationVector);
 
     if (CorrelationVector.validateCorrelationVectorDuringCreation) {
       CorrelationVector.validate(correlationVector, version);
@@ -147,46 +127,10 @@ export class CorrelationVector {
 
     let baseVector: string = `${correlationVector}.${s}`;
     if (CorrelationVector.isOversized(baseVector, 0, version)) {
-      return CorrelationVector.parse(
-        correlationVector + CorrelationVector.terminationSign
-      );
+      return parse(correlationVector + terminationSign);
     }
 
     return new CorrelationVector(baseVector, 0, version, false);
-  }
-
-  /**
-   * Creates a new correlation vector by parsing its string representation
-   * @param {string} correlationVector correlationVector
-   * @returns {CorrelationVector} parsed correlation vector
-   */
-  public static parse(correlationVector: string): CorrelationVector {
-    if (correlationVector) {
-      let p: number = correlationVector.lastIndexOf(".");
-      let immutable: boolean = CorrelationVector.isImmutable(correlationVector);
-      if (p > 0) {
-        let extensionValue: string = immutable
-          ? correlationVector.substr(
-              p + 1,
-              correlationVector.length -
-                p -
-                1 -
-                CorrelationVector.terminationSign.length
-            )
-          : correlationVector.substr(p + 1);
-        let extension: number = parseInt(extensionValue, 10);
-        if (!isNaN(extension) && extension >= 0) {
-          return new CorrelationVector(
-            correlationVector.substr(0, p),
-            extension,
-            CorrelationVector.inferversion(correlationVector, false),
-            immutable
-          );
-        }
-      }
-    }
-
-    return CorrelationVector.createCorrelationVector();
   }
 
   /**
@@ -213,7 +157,7 @@ export class CorrelationVector {
    */
   public get value(): string {
     return `${this.baseVector}.${this.extension}${
-      this.immutable ? CorrelationVector.terminationSign : ""
+      this.immutable ? terminationSign : ""
     }`;
   }
 
@@ -253,7 +197,7 @@ export class CorrelationVector {
     return this.value;
   }
 
-  private constructor(
+  public constructor(
     baseVector: string,
     extension: number,
     version: CvVersion,
@@ -287,30 +231,6 @@ export class CorrelationVector {
     }
 
     return result;
-  }
-
-  private static inferversion(
-    correlationVector: string,
-    reportErrors: boolean
-  ): CvVersion {
-    let index: number =
-      correlationVector == null ? -1 : correlationVector.indexOf(".");
-
-    if (baseLengthV1 === index) {
-      return "v1";
-    } else if (baseLengthV2 === index) {
-      return "v2";
-    } else {
-      // by default not reporting error, just return V1
-      return "v1";
-    }
-  }
-
-  private static isImmutable(correlationVector: string): boolean {
-    return (
-      correlationVector &&
-      correlationVector.endsWith(CorrelationVector.terminationSign)
-    );
   }
 
   private static isOversized(
