@@ -1,4 +1,9 @@
-export enum SpinEntropy {
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
+export const enum SpinEntropy {
   /**
    * Do not generate entropy as part of the spin value.
    */
@@ -7,10 +12,10 @@ export enum SpinEntropy {
   /**
    * Generate entropy using 8 bits.
    */
-  One = 1,
+  Low = 8,
 
   /**
    * Generate entropy using 16 bits.
    */
-  Two = 2,
+  High = 16,
 }

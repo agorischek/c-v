@@ -1,10 +1,11 @@
-import {
-  baseLengthV1,
-  baseLengthV2,
-  base64CharSet,
-  base64LastCharSet,
-  defaultVersion,
-} from "../constants";
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
+import { base64CharSet, base64LastCharSet } from "../constants/characters";
+import { defaultVersion } from "../constants/defaults";
+import { baseLengthV1, baseLengthV2 } from "../constants/lenghts";
 import { Version } from "../types/Version";
 
 /**

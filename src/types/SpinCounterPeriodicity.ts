@@ -1,4 +1,9 @@
-export enum SpinCounterPeriodicity {
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
+export const enum SpinCounterPeriodicity {
   /**
    * Do not store a counter as part of the spin value.
    */

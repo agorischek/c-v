@@ -1,13 +1,18 @@
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
 import { Version } from "../types/Version";
 import { extend } from "./extend";
 import { version } from "../properties/version";
 import { immutable } from "../properties/immutable";
-import { oversized } from "../properties/oversized";
 import { terminate } from "./terminate";
+import { SpinParameters } from "../types/SpinParameters";
+import { isOversized } from "../internal/isOversized";
 import { SpinCounterInterval } from "../types/SpinCounterInterval";
 import { SpinCounterPeriodicity } from "../types/SpinCounterPeriodicity";
 import { SpinEntropy } from "../types/SpinEntropy";
-import { SpinParameters } from "../types/SpinParameters";
 
 /**
  * Creates a new correlation vector by applying the Spin operator to an existing value.
@@ -26,7 +31,7 @@ export const spin = (cv: string, parameters?: SpinParameters): string => {
   parameters = parameters || {
     interval: SpinCounterInterval.Coarse,
     periodicity: SpinCounterPeriodicity.Short,
-    entropy: SpinEntropy.Two,
+    entropy: SpinEntropy.High,
   };
 
   // javascript only returns ms, 1ms = 10000ticks
@@ -34,7 +39,7 @@ export const spin = (cv: string, parameters?: SpinParameters): string => {
 
   // javascript only supports 32-bit bitwise operation, we need to convert it to string
   let value: string = ticks.toString(2);
-  value = value.substring(0, value.length - getTicksBitsToDrop(parameters));
+  value = value.substring(0, value.length - parameters.interval);
 
   if (parameters.entropy > 0) {
     const entropyPow: number = parameters.entropy * 8;
@@ -48,48 +53,21 @@ export const spin = (cv: string, parameters?: SpinParameters): string => {
   }
 
   // the max safe number for js is 52.
-  const allowedBits: number = Math.min(52, getTotalBits(parameters));
+  const allowedBits: number = Math.min(
+    52,
+    parameters.periodicity + parameters.entropy * 8
+  );
   if (value.length > allowedBits) {
     value = value.substring(value.length - allowedBits);
   }
 
   let s: number = parseInt(value, 2);
 
-  let baseVector: string = `${cv}.${s}`;
-  if (oversized(baseVector, 0, v)) {
-    return terminate(baseVector);
+  let base: string = `${cv}.${s}`;
+  if (isOversized(base, 0, v)) {
+    return terminate(base);
   }
 
-  const vector = extend(baseVector);
+  const vector = extend(base);
   return vector;
 };
-
-function getTicksBitsToDrop(params: SpinParameters): number {
-  switch (params.interval) {
-    case SpinCounterInterval.Coarse:
-      return 24;
-    case SpinCounterInterval.Fine:
-      return 16;
-    default:
-      return 24;
-  }
-}
-
-function getTotalBits(params: SpinParameters): number {
-  let counterBits: number = 0;
-  switch (params.periodicity) {
-    case SpinCounterPeriodicity.None:
-      counterBits = 0;
-      break;
-    case SpinCounterPeriodicity.Short:
-      counterBits = 16;
-      break;
-    case SpinCounterPeriodicity.Medium:
-      counterBits = 24;
-      break;
-    default:
-      counterBits = 0;
-      break;
-  }
-  return counterBits + params.entropy * 8;
-}

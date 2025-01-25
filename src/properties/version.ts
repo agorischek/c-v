@@ -1,15 +1,19 @@
-import { baseLengthV1, baseLengthV2 } from "../constants";
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
+import { baseLengthV1, baseLengthV2 } from "../constants/defaults";
 import { Version } from "../types/Version";
 
-export const version = (correlationVector: string): Version => {
-  let index: number =
-    correlationVector == null ? -1 : correlationVector.indexOf(".");
+export const version = (cv: string): Version => {
+  let index: number = cv == null ? -1 : cv.indexOf(".");
 
   if (baseLengthV1 === index) {
-    return "v1";
+    return Version.V1;
   } else if (baseLengthV2 === index) {
-    return "v2";
+    return Version.V2;
   } else {
-    return "v1";
+    return Version.V1;
   }
 };

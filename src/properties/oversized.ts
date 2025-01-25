@@ -1,21 +1,14 @@
-import { maxVectorLengthV1, maxVectorLengthV2 } from "../constants";
-import { Version } from "../types/Version";
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
 
-export const oversized = (
-  baseVector: string,
-  extension: number,
-  version: Version
-): boolean => {
-  if (baseVector) {
-    let size: number =
-      baseVector.length +
-      1 +
-      (extension > 0 ? Math.floor(Math.log10(extension)) : 0) +
-      1;
-    return (
-      (version === "v1" && size > maxVectorLengthV1) ||
-      (version === "v2" && size > maxVectorLengthV2)
-    );
-  }
-  return false;
+import { isOversized } from "../internal/isOversized";
+import { split } from "../utilities/split";
+import { version } from "./version";
+
+export const oversized = (cv: string): boolean => {
+  const [base, extension] = split(cv);
+  const v = version(cv);
+  return isOversized(base, extension, v);
 };

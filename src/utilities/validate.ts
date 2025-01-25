@@ -1,4 +1,9 @@
-import { maxVectorLengthV2, baseLengthV2 } from "../constants";
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
+import { baseLengthV2, maxVectorLengthV2 } from "../constants/lenghts";
 import { Version } from "../types/Version";
 
 export const validate = (correlationVector: string, version: Version): void => {

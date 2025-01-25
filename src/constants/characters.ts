@@ -1,9 +1,3 @@
-import { Version } from "./types/Version";
-
-export const maxVectorLengthV1 = 63;
-export const maxVectorLengthV2 = 127;
-export const baseLengthV1 = 16;
-export const baseLengthV2 = 22;
 export const base64CharSet =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
@@ -22,5 +16,3 @@ export const terminationSign = "!";
 // g - 10 0000
 // w - 11 0000
 export const base64LastCharSet = "AQgw";
-
-export const defaultVersion: Version = "v2";

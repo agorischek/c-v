@@ -1,5 +1,10 @@
-import { terminationSign } from "../constants";
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
 
-export const terminate = (correlationVector: string): string => {
-  return correlationVector + terminationSign;
+import { terminationSign } from "../constants/defaults";
+
+export const terminate = (cv: string): string => {
+  return cv + terminationSign;
 };

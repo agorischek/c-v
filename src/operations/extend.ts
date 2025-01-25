@@ -1,3 +1,8 @@
+/*
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License.
+ */
+
 /**
  * Extends the correlation vector by appending ".0".
  * @param {string} cv The current correlation vector string.
