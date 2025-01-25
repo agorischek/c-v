@@ -31,7 +31,7 @@ export const validate = (correlationVector: string, version: Version): void => {
     );
   }
 
-  let parts: string[] = correlationVector.split(".");
+  const parts: string[] = correlationVector.split(".");
 
   if (parts.length < 2 || parts[0].length !== baseLength) {
     throw new Error(
@@ -40,7 +40,7 @@ export const validate = (correlationVector: string, version: Version): void => {
   }
 
   for (let i: number = 1; i < parts.length; i++) {
-    let result: number = parseInt(parts[i], 10);
+    const result: number = parseInt(parts[i], 10);
     if (isNaN(result) || result < 0) {
       throw new Error(
         `Invalid correlation vector ${correlationVector}. Invalid extension value ${parts[i]}`

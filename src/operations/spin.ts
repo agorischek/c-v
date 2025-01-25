@@ -49,10 +49,10 @@ export const spin = (
     ...parameters,
   };
 
-  let v: Version = version(correlationVector);
+  const v: Version = version(correlationVector);
 
   // JavaScript only returns ms, 1ms = 10000ticks
-  let ticks: number = Date.now() * 10000;
+  const ticks: number = Date.now() * 10000;
 
   // JavaScript only supports 32-bit bitwise operation, we need to convert it to string
   let value: string = ticks.toString(2);
@@ -82,9 +82,9 @@ export const spin = (
     value = value.substring(value.length - allowedBits);
   }
 
-  let s: number = parseInt(value, 2);
+  const s: number = parseInt(value, 2);
 
-  let baseVector: string = `${correlationVector}.${s}`;
+  const baseVector: string = `${correlationVector}.${s}`;
   if (overflow(baseVector, 0, v)) {
     return terminate(correlationVector);
   }

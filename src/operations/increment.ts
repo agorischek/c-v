@@ -24,9 +24,9 @@ export const increment = (cv: string): string => {
   if (extension === Number.MAX_SAFE_INTEGER) {
     return cv;
   }
-  let next: number = extension + 1;
+  const next: number = extension + 1;
 
-  let size: number =
+  const size: number =
     base.length + 1 + (next > 0 ? Math.floor(Math.log10(next)) : 0) + 1;
   if (
     (v === "v1" && size > maxVectorLengthV1) ||

@@ -12,7 +12,7 @@ export const overflow = (
   version: Version
 ): boolean => {
   if (baseVector) {
-    let size: number =
+    const size: number =
       baseVector.length +
       1 +
       (extension > 0 ? Math.floor(Math.log10(extension)) : 0) +

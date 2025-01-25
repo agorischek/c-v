@@ -14,7 +14,7 @@ import { Version } from "../types/Version";
  */
 export const seed = (version: Version = defaultVersion): string => {
   let result: string = "";
-  let baseLength: number = version === "v1" ? baseLengthV1 : baseLengthV2 - 1;
+  const baseLength: number = version === "v1" ? baseLengthV1 : baseLengthV2 - 1;
   for (let i: number = 0; i < baseLength; i++) {
     result += base64CharSet.charAt(
       Math.floor(Math.random() * base64CharSet.length)
