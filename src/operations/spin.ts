@@ -3,6 +3,7 @@
  *  Licensed under the MIT License.
  */
 
+import { separator } from '../constants/characters';
 import {
   defaultSpinEntropy,
   defaultSpinInterval,
@@ -19,12 +20,9 @@ import type { Version } from '../types/Version';
 import { extend } from './extend';
 import { terminate } from './terminate';
 
-export const spin = (
-  correlationVector: string,
-  options?: SpinOptions
-): string => {
-  if (immutable(correlationVector)) {
-    return correlationVector;
+export const spin = (cv: string, options?: SpinOptions): string => {
+  if (immutable(cv)) {
+    return cv;
   }
   const params: SpinOptions = {
     interval: defaultSpinInterval,
@@ -33,7 +31,7 @@ export const spin = (
     ...options,
   };
 
-  const v: Version = version(correlationVector);
+  const v: Version = version(cv);
 
   // JavaScript only returns ms, 1ms = 10000ticks
   const ticks: number = Date.now() * 10000;
@@ -66,9 +64,9 @@ export const spin = (
 
   const s: number = parseInt(value, 2);
 
-  const baseVector: string = `${correlationVector}.${s}`;
+  const baseVector: string = `${cv}${separator}${s}`;
   if (overflow(baseVector, 0, v)) {
-    return terminate(correlationVector);
+    return terminate(cv);
   }
 
   return extend(baseVector);
