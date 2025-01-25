@@ -1,14 +1,25 @@
 {
-  "name": "c-v",
+  "name": "my-lib",
   "version": "0.0.1",
-  "module": "src/index.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/my-lib.umd.cjs",
+  "module": "./dist/my-lib.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.js",
+      "require": "./dist/my-lib.umd.cjs"
+    }
+  },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@types/bun": "latest",
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
-    "typescript-eslint": "^8.21.0"
+    "typescript-eslint": "^8.21.0",
+    "vite": "^6.0.11"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -16,9 +27,12 @@
   "author": "Microsoft",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "vite build",
     "dev": "bun run dev/run.ts",
     "test": "bun test",
     "lint": "eslint ."
+  },
+  "dependencies": {
+    "desm": "^1.3.1"
   }
 }
