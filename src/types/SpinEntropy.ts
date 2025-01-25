@@ -10,4 +10,4 @@
  * - "low": Generate entropy using 8 bits.
  * - "high": Generate entropy using 16 bits.
  */
-export type SpinEntropy = "none" | "low" | "high";
+export type SpinEntropy = 'none' | 'low' | 'high';

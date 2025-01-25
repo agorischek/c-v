@@ -11,4 +11,4 @@
  * - "fine": The fine interval drops the 16 least significant bits in DateTime.Ticks
  *   resulting in a counter that increments every 6.5 milliseconds.
  */
-export type SpinCounterInterval = "coarse" | "fine";
+export type SpinCounterInterval = 'coarse' | 'fine';

@@ -3,7 +3,7 @@
  *  Licensed under the MIT License.
  */
 
-import { terminator } from "../constants/characters";
+import { terminator } from '../constants/characters';
 
 export const terminate = (cv: string): string => {
   return cv + terminator;

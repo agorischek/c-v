@@ -3,7 +3,7 @@
  *  Licensed under the MIT License.
  */
 
-import { separator, terminator } from "../constants/characters";
+import { separator, terminator } from '../constants/characters';
 
 /**
  * Splits the correlation vector into base and extension.
@@ -16,7 +16,7 @@ export const split = (cv: string): [string, number] => {
   }
 
   const segments = cv.split(separator);
-  const extensionSegment = parseInt(segments.pop() || "0", 10);
+  const extensionSegment = parseInt(segments.pop() || '0', 10);
   const base = segments.join(separator);
   return [base, isNaN(extensionSegment) ? 0 : extensionSegment];
 };

@@ -3,10 +3,10 @@
  *  Licensed under the MIT License.
  */
 
-import { version } from "../properties/version";
-import { immutable } from "../properties/immutable";
-import { split } from "../utilities/split";
-import { maxVectorLengthV1, maxVectorLengthV2 } from "../constants/lengths";
+import { maxVectorLengthV1, maxVectorLengthV2 } from '../constants/lengths';
+import { immutable } from '../properties/immutable';
+import { version } from '../properties/version';
+import { split } from '../utilities/split';
 
 /**
  * Increments the current extension by one. Do this before passing the value to an
@@ -29,8 +29,8 @@ export const increment = (cv: string): string => {
   const size: number =
     base.length + 1 + (next > 0 ? Math.floor(Math.log10(next)) : 0) + 1;
   if (
-    (v === "v1" && size > maxVectorLengthV1) ||
-    (v === "v2" && size > maxVectorLengthV2)
+    (v === 'v1' && size > maxVectorLengthV1) ||
+    (v === 'v2' && size > maxVectorLengthV2)
   ) {
     return cv;
   }

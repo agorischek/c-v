@@ -3,10 +3,10 @@
  *  Licensed under the MIT License.
  */
 
-import { Version } from "./types/Version";
-import { extend } from "./operations/extend";
-import { seed } from "./utilities/seed";
-import { defaultVersion } from "./constants/defaults";
+import { defaultVersion } from './constants/defaults';
+import { extend } from './operations/extend';
+import { Version } from './types/Version';
+import { seed } from './utilities/seed';
 
 export const cv = (version: Version = defaultVersion): string => {
   return extend(seed(version));

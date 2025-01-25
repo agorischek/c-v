@@ -8,17 +8,17 @@ import {
   baseLengthV2,
   maxVectorLengthV1,
   maxVectorLengthV2,
-} from "../constants/lengths";
-import { Version } from "../types/Version";
+} from '../constants/lengths';
+import { Version } from '../types/Version';
 
 export const validate = (correlationVector: string, version: Version): void => {
   let maxVectorLength: number;
   let baseLength: number;
 
-  if ("v1" === version) {
+  if ('v1' === version) {
     maxVectorLength = maxVectorLengthV1;
     baseLength = baseLengthV1;
-  } else if ("v2" === version) {
+  } else if ('v2' === version) {
     maxVectorLength = maxVectorLengthV2;
     baseLength = baseLengthV2;
   } else {
@@ -31,7 +31,7 @@ export const validate = (correlationVector: string, version: Version): void => {
     );
   }
 
-  const parts: string[] = correlationVector.split(".");
+  const parts: string[] = correlationVector.split('.');
 
   if (parts.length < 2 || parts[0].length !== baseLength) {
     throw new Error(

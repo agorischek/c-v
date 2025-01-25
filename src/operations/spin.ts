@@ -3,21 +3,21 @@
  *  Licensed under the MIT License.
  */
 
-import { overflow } from "../internal/overflow";
-import { extend } from "./extend";
-import { terminate } from "./terminate";
-import { immutable } from "../properties/immutable";
-import { version } from "../properties/version";
-import type { Version } from "../types/Version";
-import type { SpinOptions } from "../types/SpinParameters";
 import {
   defaultSpinEntropy,
   defaultSpinInterval,
   defaultSpinPeriodicity,
-} from "../constants/defaults";
-import { spinCounterIntervals } from "../constants/spinCounterIntervals";
-import { spinCounterPeriodicities } from "../constants/spinCounterPeriodicities";
-import { spinEntropies } from "../constants/spinEntropies";
+} from '../constants/defaults';
+import { spinCounterIntervals } from '../constants/spinCounterIntervals';
+import { spinCounterPeriodicities } from '../constants/spinCounterPeriodicities';
+import { spinEntropies } from '../constants/spinEntropies';
+import { overflow } from '../internal/overflow';
+import { immutable } from '../properties/immutable';
+import { version } from '../properties/version';
+import type { SpinOptions } from '../types/SpinParameters';
+import type { Version } from '../types/Version';
+import { extend } from './extend';
+import { terminate } from './terminate';
 
 export const spin = (
   correlationVector: string,
@@ -50,7 +50,7 @@ export const spin = (
       Math.random() * Math.pow(2, spinEntropies[params.entropy] - 1)
     ).toString(2);
     while (entropy.length < spinEntropies[params.entropy]) {
-      entropy = "0" + entropy;
+      entropy = '0' + entropy;
     }
     value = value + entropy;
   }

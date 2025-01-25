@@ -5,8 +5,9 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/cv.cjs",
+  "module": "./dist/cv.js",
+  "types": "./dist/cv.d.ts",
   "exports": {
     ".": {
       "import": "./dist/my-lib.js",
@@ -18,6 +19,7 @@
     "@types/bun": "latest",
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "typescript-eslint": "^8.21.0",
     "vite": "^6.0.11",
     "vite-plugin-dts": "^4.5.0"
@@ -30,6 +32,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "bun run dev/run.ts",
+    "format": "prettier --write .",
     "test": "bun test",
     "lint": "eslint ."
   },

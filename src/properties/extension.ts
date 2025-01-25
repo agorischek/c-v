@@ -3,7 +3,7 @@
  *  Licensed under the MIT License.
  */
 
-import { split } from "../utilities/split";
+import { split } from '../utilities/split';
 
 /**
  * Gets the extension from a correlation vector string.

@@ -1,4 +1,4 @@
-import type { SpinCounterPeriodicity } from "../types/SpinCounterPeriodicity";
+import type { SpinCounterPeriodicity } from '../types/SpinCounterPeriodicity';
 
 export const spinCounterPeriodicities: Record<SpinCounterPeriodicity, number> =
   {

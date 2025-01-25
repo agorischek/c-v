@@ -10,4 +10,4 @@
  * - "short": The short periodicity stores the counter using 16 bits.
  * - "medium": The medium periodicity stores the counter using 24 bits.
  */
-export type SpinCounterPeriodicity = "none" | "short" | "medium";
+export type SpinCounterPeriodicity = 'none' | 'short' | 'medium';
