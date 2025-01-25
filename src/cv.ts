@@ -11,11 +11,11 @@ import { type Version } from './types/Version';
 /**
  * Generates a string based on the provided version.
  *
- * @param - The version to use for generating the string. Defaults to V2.
+ * @param version The version to use for generating the string. Defaults to `'v2'`.
  * @returns The generated vector.
  *
  * @example
- * const vector = cv(); // defaults to V2
+ * const vector = cv(); // defaults to 'v2'
  * // rnpW+xz0i3qLVgbTnj3Cpw.0
  *
  * @example
